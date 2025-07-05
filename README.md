@@ -1,50 +1,73 @@
-<<<<<<< HEAD
-# 🚀 Lead Quality Prediction System
+# Welcome to your Lovable project
 
-<div align="center">
-  <img src="https://placehold.co/1200x400/1e3a8a/white?text=Lead+Conversion+Analyzer" alt="Project Banner" style="border-radius:8px;margin-bottom:20px;">
-  
-  [![React](https://img.shields.io/badge/React-18.2-blue?logo=react)](https://react.dev/)
-  [![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue?logo=typescript)](https://www.typescriptlang.org/)
-  [![FastAPI](https://img.shields.io/badge/FastAPI-0.95-green?logo=fastapi)](https://fastapi.tiangolo.com/)
-  [![Scikit-learn](https://img.shields.io/badge/Scikit--learn-1.2-orange?logo=scikit-learn)](https://scikit-learn.org/)
-</div>
+## Project info
 
-## ✨ Key Features
+**URL**: https://lovable.dev/projects/896b651c-5226-4369-86d3-35a9d04cc383
 
-- **ML-Powered Predictions**: SVC model with 92% accuracy
-- **Beautiful UI**: Modern form with shadcn/ui components
-- **Real-time Analysis**: Instant lead scoring
-- **Enterprise Ready**: Production-grade architecture
+## How can I edit this code?
 
-## 🛠️ Technology Stack
+There are several ways of editing your application.
 
-### Frontend
-| Component | Technology |
-|-----------|------------|
-| Framework | React 18 (TypeScript) |
-| Build Tool | Vite 4 |
-| Styling | Tailwind CSS 3 + shadcn/ui |
-| State | @tanstack/react-query 4 |
-| Icons | lucide-react |
-| Routing | react-router-dom 6 |
+**Use Lovable**
 
-### Backend
-| Component | Technology |
-|-----------|------------|
-| Framework | FastAPI 0.95 |
-| ML | Scikit-learn 1.2 |
-| Data | Pandas 2 + NumPy 1.24 |
-| Server | Uvicorn 0.22 |
-| Serialization | Joblib 1.2 |
+Simply visit the [Lovable Project](https://lovable.dev/projects/896b651c-5226-4369-86d3-35a9d04cc383) and start prompting.
 
-## 🖥️ System Architecture
+Changes made via Lovable will be committed automatically to this repo.
 
-```mermaid
-graph TD
-    A[React Frontend] -->|HTTP| B(FastAPI Backend)
-    B -->|Load| C[Scikit-learn Model]
-    C -->|Predict| D[(Lead Data)]
-=======
-# Lead-scrape-predictor
->>>>>>> 36e21f99aab2ddf30336796f578ba718e095e8f5
+**Use your preferred IDE**
+
+If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+
+The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+
+Follow these steps:
+
+```sh
+# Step 1: Clone the repository using the project's Git URL.
+git clone <YOUR_GIT_URL>
+
+# Step 2: Navigate to the project directory.
+cd <YOUR_PROJECT_NAME>
+
+# Step 3: Install the necessary dependencies.
+npm i
+
+# Step 4: Start the development server with auto-reloading and an instant preview.
+npm run dev
+```
+
+**Edit a file directly in GitHub**
+
+- Navigate to the desired file(s).
+- Click the "Edit" button (pencil icon) at the top right of the file view.
+- Make your changes and commit the changes.
+
+**Use GitHub Codespaces**
+
+- Navigate to the main page of your repository.
+- Click on the "Code" button (green button) near the top right.
+- Select the "Codespaces" tab.
+- Click on "New codespace" to launch a new Codespace environment.
+- Edit files directly within the Codespace and commit and push your changes once you're done.
+
+## What technologies are used for this project?
+
+This project is built with:
+
+- Vite
+- TypeScript
+- React
+- shadcn-ui
+- Tailwind CSS
+
+## How can I deploy this project?
+
+Simply open [Lovable](https://lovable.dev/projects/896b651c-5226-4369-86d3-35a9d04cc383) and click on Share -> Publish.
+
+## Can I connect a custom domain to my Lovable project?
+
+Yes, you can!
+
+To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+
+Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
