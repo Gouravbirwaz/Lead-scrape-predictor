@@ -1,188 +1,188 @@
 Project Requirements Document: ML-Powered Lead Scoring Application
 1. Introduction
-This document outlines the functional and non-functional requirements for the ML-Powered Lead Scoring Application. The purpose of this system is to provide a robust and intuitive platform for sales teams to assess the quality and conversion potential of leads using a machine learning model. This system aims to streamline the lead qualification process, improve conversion rates, and optimize resource allocation.
+   This document outlines the functional and non-functional requirements for the ML-Powered Lead Scoring Application. The purpose of this system is to provide a     robust and intuitive platform for sales teams to assess the quality and conversion potential of leads using a machine learning model. This system aims to         streamline the lead qualification process, improve conversion rates, and optimize resource allocation.
 
 2. Project Goals
-The primary goals of the Lead Scoring Application are:
+   The primary goals of the Lead Scoring Application are:
 
-To enable sales users to input lead-specific data for quality assessment.
+   To enable sales users to input lead-specific data for quality assessment.
 
-To leverage a machine learning model to predict the conversion potential of a lead.
+   To leverage a machine learning model to predict the conversion potential of a lead.
 
-To provide clear and actionable insights (e.g., quality score, acceptance status) based on model predictions.
+   To provide clear and actionable insights (e.g., quality score, acceptance status) based on model predictions.
 
-To enhance the efficiency and effectiveness of the lead management process for sales teams.
+   To enhance the efficiency and effectiveness of the lead management process for sales teams.
 
-To offer a scalable and maintainable solution for lead scoring.
+   To offer a scalable and maintainable solution for lead scoring.
 
 3. Stakeholders
-The key stakeholders for this project include:
+   The key stakeholders for this project include:
 
-Sales Users: Individuals responsible for lead generation, qualification, and conversion. They will be the primary users of the frontend application.
+   Sales Users: Individuals responsible for lead generation, qualification, and conversion. They will be the primary users of the frontend application.
 
-Sales Managers/Administrators: Individuals responsible for overseeing sales operations, analyzing lead performance, and potentially managing system configurations.
+   Sales Managers/Administrators: Individuals responsible for overseeing sales operations, analyzing lead performance, and potentially managing system               configurations.
 
 Data Scientists/ML Engineers: Responsible for developing, training, and maintaining the underlying machine learning model and its API.
 
 IT Operations/DevOps: Responsible for deploying, monitoring, and maintaining the application infrastructure.
 
 4. Functional Requirements
-4.1. Frontend Application (React)
-FR-FE-001: Lead Data Input Form
-The system SHALL provide a comprehensive web-based form for sales users to input various lead attributes. This form shall include fields for:
-
-Lead Origin, Lead Source
-
-Contact Preferences (Do Not Email, Do Not Call, Converted)
-
-Activity Metrics (Total Visits, Total Time Spent on Website, Page Views Per Visit, Last Activity, Last Notable Activity)
-
-Location Information (Country, City)
-
-Education & Professional Details (Specialization, Current Occupation)
-
-Survey Information (How did you hear about X Education, What matters most to you in choosing a course)
-
-Marketing Channels (Search, Magazine, Newspaper Article, X Education Forums, Newspaper, Digital Advertisement, Through Recommendations, Receive More Updates About Our Courses, Update me on Supply Chain Content, Get updates on DM Content)
-
-Asymmetrique Analytics (Asymmetrique Activity Index, Asymmetrique Profile Index, Asymmetrique Activity Score, Asymmetrique Profile Score)
-
-Additional Information (Tags, Lead Quality, Lead Profile, I agree to pay the amount through cheque, A free copy of Mastering The Interview)
-
-FR-FE-002: Lead Prediction Request
-The system SHALL allow sales users to submit the collected lead data to the backend API for prediction.
-
-FR-FE-003: Prediction Result Display
-The system SHALL display the prediction results from the backend, including:
-
-Predicted Lead Quality (e.g., 'High', 'Medium', 'Low')
-
-Quantitative Quality Score (e.g., 0-100%)
-
-Lead Acceptance Status (Accepted/Rejected)
-
-Prediction Confidence Score
-
-Key features/factors used in the prediction (if provided by the backend).
-
-FR-FE-004: Reset Functionality
-The system SHALL provide a "Reset" button to clear the displayed prediction results and return to the empty input form, allowing for new lead assessments.
-
-FR-FE-005: Loading Indicator
-The system SHALL display a visual loading indicator while the prediction request is being processed by the backend.
-
-FR-FE-006: Error Handling and Display
-The system SHALL gracefully handle errors during the prediction process (e.g., network issues, API errors) and display informative error messages to the user.
+  4.1. Frontend Application (React)
+    FR-FE-001: Lead Data Input Form
+    The system SHALL provide a comprehensive web-based form for sales users to input various lead attributes. This form shall include fields for:
+    
+    Lead Origin, Lead Source
+    
+    Contact Preferences (Do Not Email, Do Not Call, Converted)
+    
+    Activity Metrics (Total Visits, Total Time Spent on Website, Page Views Per Visit, Last Activity, Last Notable Activity)
+    
+    Location Information (Country, City)
+    
+    Education & Professional Details (Specialization, Current Occupation)
+    
+    Survey Information (How did you hear about X Education, What matters most to you in choosing a course)
+    
+    Marketing Channels (Search, Magazine, Newspaper Article, X Education Forums, Newspaper, Digital Advertisement, Through Recommendations, Receive More Updates       About Our Courses, Update me on Supply Chain Content, Get updates on DM Content)
+    
+    Asymmetrique Analytics (Asymmetrique Activity Index, Asymmetrique Profile Index, Asymmetrique Activity Score, Asymmetrique Profile Score)
+    
+    Additional Information (Tags, Lead Quality, Lead Profile, I agree to pay the amount through cheque, A free copy of Mastering The Interview)
+    
+    FR-FE-002: Lead Prediction Request
+    The system SHALL allow sales users to submit the collected lead data to the backend API for prediction.
+    
+    FR-FE-003: Prediction Result Display
+    The system SHALL display the prediction results from the backend, including:
+    
+    Predicted Lead Quality (e.g., 'High', 'Medium', 'Low')
+    
+    Quantitative Quality Score (e.g., 0-100%)
+    
+    Lead Acceptance Status (Accepted/Rejected)
+    
+    Prediction Confidence Score
+    
+    Key features/factors used in the prediction (if provided by the backend).
+    
+    FR-FE-004: Reset Functionality
+    The system SHALL provide a "Reset" button to clear the displayed prediction results and return to the empty input form, allowing for new lead assessments.
+    
+    FR-FE-005: Loading Indicator
+    The system SHALL display a visual loading indicator while the prediction request is being processed by the backend.
+    
+    FR-FE-006: Error Handling and Display
+    The system SHALL gracefully handle errors during the prediction process (e.g., network issues, API errors) and display informative error messages to the user.
 
 4.2. Backend API (FastAPI)
-FR-BE-001: Model Loading
-The API SHALL load the pre-trained machine learning pipeline (lead_scoring_pipeline.pkl), label encoder (label_encoder.pkl), and feature columns (feature_columns.pkl) upon startup.
-
-FR-BE-002: Single Lead Prediction Endpoint
-The API SHALL expose a /predict POST endpoint that accepts structured lead data (JSON) and returns a prediction.
-
-Input: JSON object containing lead attributes as defined in the frontend form.
-
-Output: JSON object containing:
-
-prediction: The predicted lead quality label (e.g., 'High', 'Medium', 'Low').
-
-quality_score: A numerical score representing lead quality.
-
-accepted: A boolean indicating if the lead is accepted based on a threshold.
-
-prediction_confidence: A numerical score indicating the model's confidence in the prediction.
-
-features_used: A list of features that significantly influenced the prediction.
-
-FR-BE-003: CSV Batch Prediction Endpoint (Optional)
-The API MAY expose a /predict_csv POST endpoint that accepts a CSV file of lead data and returns predictions for all leads in the file.
-
-Input: CSV file.
-
-Output: JSON object containing a list of predictions.
-
-FR-BE-004: Data Validation and Preprocessing
-The API SHALL validate incoming lead data against expected schema and reindex columns to match the model's training features before prediction.
-
-FR-BE-005: Error Handling
-The API SHALL handle prediction errors (e.g., invalid input, model loading issues) and return appropriate HTTP status codes and error messages.
-
-5. Non-Functional Requirements
-NFR-001: Performance
-
-Response Time: The prediction response time for a single lead SHALL be less than 2 seconds under normal load.
-
-Scalability: The backend API SHALL be capable of handling an increasing number of concurrent requests without significant degradation in performance.
-
-NFR-002: Security
-
-CORS: The backend API SHALL implement Cross-Origin Resource Sharing (CORS) to allow requests from the frontend application.
-
-Data Handling: Sensitive lead data SHALL be handled securely, adhering to privacy regulations. (Further details on data encryption/anonymization may be specified).
-
-NFR-003: Usability
-
-Intuitive Interface: The frontend application SHALL provide a clear, easy-to-understand, and intuitive user interface for lead data input and result interpretation.
-
-Responsiveness: The frontend application SHALL be fully responsive and provide an optimal viewing experience across various devices (desktop, tablet, mobile).
-
-NFR-004: Maintainability
-
-Modular Codebase: The codebase for both frontend and backend SHALL be modular, well-organized, and adhere to best practices for readability and maintainability.
-
-Documentation: Key components, APIs, and complex logic SHALL be well-documented.
-
-Dependencies: All project dependencies SHALL be clearly listed and managed (e.g., package.json, requirements.txt).
-
-NFR-005: Reliability
-
-Error Recovery: The system SHALL be designed to recover gracefully from anticipated errors (e.g., network interruptions, invalid input).
-
-Availability: The backend API SHALL aim for high availability to ensure continuous prediction service.
+      FR-BE-001: Model Loading
+      The API SHALL load the pre-trained machine learning pipeline (lead_scoring_pipeline.pkl), label encoder (label_encoder.pkl), and feature columns (feature_columns.pkl) upon startup.
+      
+      FR-BE-002: Single Lead Prediction Endpoint
+      The API SHALL expose a /predict POST endpoint that accepts structured lead data (JSON) and returns a prediction.
+      
+      Input: JSON object containing lead attributes as defined in the frontend form.
+      
+      Output: JSON object containing:
+      
+      prediction: The predicted lead quality label (e.g., 'High', 'Medium', 'Low').
+      
+      quality_score: A numerical score representing lead quality.
+      
+      accepted: A boolean indicating if the lead is accepted based on a threshold.
+      
+      prediction_confidence: A numerical score indicating the model's confidence in the prediction.
+      
+      features_used: A list of features that significantly influenced the prediction.
+      
+      FR-BE-003: CSV Batch Prediction Endpoint (Optional)
+      The API MAY expose a /predict_csv POST endpoint that accepts a CSV file of lead data and returns predictions for all leads in the file.
+      
+      Input: CSV file.
+      
+      Output: JSON object containing a list of predictions.
+      
+      FR-BE-004: Data Validation and Preprocessing
+      The API SHALL validate incoming lead data against expected schema and reindex columns to match the model's training features before prediction.
+      
+      FR-BE-005: Error Handling
+      The API SHALL handle prediction errors (e.g., invalid input, model loading issues) and return appropriate HTTP status codes and error messages.
+      
+      5. Non-Functional Requirements
+      NFR-001: Performance
+      
+      Response Time: The prediction response time for a single lead SHALL be less than 2 seconds under normal load.
+      
+      Scalability: The backend API SHALL be capable of handling an increasing number of concurrent requests without significant degradation in performance.
+      
+      NFR-002: Security
+      
+      CORS: The backend API SHALL implement Cross-Origin Resource Sharing (CORS) to allow requests from the frontend application.
+      
+      Data Handling: Sensitive lead data SHALL be handled securely, adhering to privacy regulations. (Further details on data encryption/anonymization may be specified).
+      
+      NFR-003: Usability
+      
+      Intuitive Interface: The frontend application SHALL provide a clear, easy-to-understand, and intuitive user interface for lead data input and result interpretation.
+      
+      Responsiveness: The frontend application SHALL be fully responsive and provide an optimal viewing experience across various devices (desktop, tablet, mobile).
+      
+      NFR-004: Maintainability
+      
+      Modular Codebase: The codebase for both frontend and backend SHALL be modular, well-organized, and adhere to best practices for readability and maintainability.
+      
+      Documentation: Key components, APIs, and complex logic SHALL be well-documented.
+      
+      Dependencies: All project dependencies SHALL be clearly listed and managed (e.g., package.json, requirements.txt).
+      
+      NFR-005: Reliability
+      
+      Error Recovery: The system SHALL be designed to recover gracefully from anticipated errors (e.g., network interruptions, invalid input).
+      
+      Availability: The backend API SHALL aim for high availability to ensure continuous prediction service.
 
 6. Technical Stack
-Frontend:
+    Frontend:
 
-Vite
+        Vite
+        
+        TypeScript
+        
+        React
+        
+        shadcn-ui
+        
+        Tailwind CSS
+        
+        react-router-dom
+        
+        @tanstack/react-query
+        
+        lucide-react
+  
+    Backend:
 
-TypeScript
-
-React
-
-shadcn-ui
-
-Tailwind CSS
-
-react-router-dom
-
-@tanstack/react-query
-
-lucide-react
-
-Backend:
-
-Python
-
-FastAPI
-
-Scikit-learn
-
-Pandas
-
-NumPy
-
-Joblib
-
-Uvicorn (ASGI server)
+        Python
+        
+        FastAPI
+        
+        Scikit-learn
+        
+        Pandas
+        
+        NumPy
+        
+        Joblib
+        
+        Uvicorn (ASGI server)
 
 7. Future Enhancements (Optional)
-User authentication and authorization.
-
-Historical lead data tracking and performance analytics dashboard.
-
-Integration with CRM systems for automated lead ingestion.
-
-Ability to fine-tune model parameters via the UI (for administrators).
-
-Feedback mechanism for model predictions to facilitate continuous learning.
+        User authentication and authorization.
+        
+        Historical lead data tracking and performance analytics dashboard.
+        
+        Integration with CRM systems for automated lead ingestion.
+        
+        Ability to fine-tune model parameters via the UI (for administrators).
+        
+        Feedback mechanism for model predictions to facilitate continuous learning.
